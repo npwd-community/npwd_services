@@ -64,9 +64,6 @@ module.exports = {
       exposes: {
         './config': './npwd.config',
       },
-      remotes: {
-        "layout": "layout@http://localhost:port/remoteEntry.js"
-      }, 
       shared: {
         ...deps,
         react: {
