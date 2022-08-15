@@ -7,13 +7,15 @@ RegisterNetEvent("npwd:qb-services:getPlayers", function()
 
 	
 	for i = 1, #players do
-		for _, job in pairs(Config.Jobs) do
-			if job == players[i].PlayerData.job.label then
-				table.insert(playerList, {
-					name = players[i].PlayerData.charinfo.firstname .. " " .. players[i].PlayerData.charinfo.lastname,
-					job = players[i].PlayerData.job.label,
-					phoneNumber = players[i].PlayerData.charinfo.phone,
-				})
+		if not Config.ShowOffDuty and players[i].PlayerData.job.onduty then
+			for _, job in pairs(Config.Jobs) do
+				if job == players[i].PlayerData.job.label then
+					table.insert(playerList, {
+						name = players[i].PlayerData.charinfo.firstname .. " " .. players[i].PlayerData.charinfo.lastname,
+						job = players[i].PlayerData.job.label,
+						phoneNumber = players[i].PlayerData.charinfo.phone,
+					})
+				end
 			end
 		end
 	end

@@ -13,3 +13,5 @@ Config.Jobs = {
     "Tow",
     "Garbage",
 }
+
+Config.ShowOffDuty = false --show players who aren't currently on duty
