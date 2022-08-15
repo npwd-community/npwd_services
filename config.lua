@@ -1,17 +1,17 @@
 Config = {}
 
 Config.Jobs = {
-    "Mechanic",
-    "Cardealer",
-    "Realestate",
-    "Taxi",
-    "Bus",
-    "Judge",
-    "Lawyer",
-    "Reporter",
-    "Trucker",
-    "Tow",
-    "Garbage",
+    "mechanic",
+    "cardealer",
+    "realestate",
+    "taxi",
+    "bus",
+    "judge",
+    "lawyer",
+    "reporter",
+    "trucker",
+    "tow",
+    "garbage",
 }
 
 Config.ShowOffDuty = false --show players who aren't currently on duty
