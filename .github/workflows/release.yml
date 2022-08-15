@@ -36,7 +36,7 @@ jobs:
     - name: Bundle
       run: |
         mkdir -p ./temp/npwd_qb_services
-        cp ./{README.md,fxmanifest.lua} ./temp/npwd_qb_services
+        cp ./{README.md,fxmanifest.lua,config.lua} ./temp/npwd_qb_services
         cp -r ./client ./temp/npwd_qb_services
         cp -r ./server ./temp/npwd_qb_services
         cp -r ./web ./temp/npwd_qb_services
