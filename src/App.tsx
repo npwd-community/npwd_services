@@ -36,7 +36,7 @@ interface AppProps {
 
 const App = (props: AppProps) => {
   const history = useHistory();
-  const [players, setPlayers] = useState<Player[] | undefined>(MockPlayers);
+  const [players, setPlayers] = useState<Player[] | undefined>([]);
   const [mappedPlayers, setMappedPlayers] = useState<any>(null);
 
   const isDarkMode = props.theme.palette.mode === 'dark';
