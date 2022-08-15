@@ -39,7 +39,7 @@ jobs:
         cp ./{README.md,fxmanifest.lua} ./temp/npwd_qb_services
         cp -r ./client ./temp/npwd_qb_services
         cp -r ./server ./temp/npwd_qb_services
-        cp -r ./wen ./temp/npwd_qb_services
+        cp -r ./web ./temp/npwd_qb_services
         cd ./temp && zip -r ../npwd_qb_services.zip ./npwd_qb_services
     - name: Create Release
       uses: "marvinpinto/action-automatic-releases@v1.2.1"
