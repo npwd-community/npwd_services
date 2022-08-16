@@ -66,9 +66,9 @@ const theme = createTheme({
 
 const Root = () => {
 	
-	if (process.env.REACT_APP_IN_GAME) {
-		return null;
-	}
+	if (process.env.NODE_ENV === 'production' || process.env.REACT_APP_IN_GAME) {
+        return null;
+    }
 	
 	return (
 		<BrowserRouter>
