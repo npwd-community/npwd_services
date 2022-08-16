@@ -8,6 +8,7 @@
 3. Ensure `npwd_qb_services` BEFORE `npwd`
 4. Add app to NPWD config.json in the `apps` section `"apps": ["npwd_qb_services]`
 
-https://i.gyazo.com/7eb7fcc02058624e3cdfb2d2514d59ac.png
+## Preview
+![7eb7fcc02058624e3cdfb2d2514d59ac](https://user-images.githubusercontent.com/97451137/184982211-754f223f-8163-44ac-8b11-b7b07fece10c.png)
 
-PS thanks chip cuz I stole half of it from esx app
+#### PS: thanks chip cuz I stole half of it from esx app
