@@ -5,7 +5,9 @@ RegisterNUICallback("npwd:qb-services:getPlayers", function(_, cb)
 	end)
 end)
 
+
 RegisterNUICallback("npwd:qb-services:callPlayer", function(data, cb)
+	-- print(data.job) job of player being called
 	exports.npwd:startPhoneCall(tostring(data.number))
 	cb({})
 end)

@@ -25,8 +25,8 @@ export const PlayersList: React.FC<PlayersListProps> = ({ players, isDarkMode })
     setCollapseId(id);
   };
 
-  const handleCallPlayer = (number: string) => {
-    fetchNui<ServerPromiseResp>('npwd:qb-services:callPlayer', { number }).then((res) => {
+  const handleCallPlayer = (number: string, job: string) => {
+    fetchNui<ServerPromiseResp>('npwd:qb-services:callPlayer', { number, job }).then((res) => {
       console.log(res.data);
     });
   };
@@ -47,7 +47,7 @@ export const PlayersList: React.FC<PlayersListProps> = ({ players, isDarkMode })
                 <ListItem
                   secondaryAction={
                     <IconButton
-                    onClick={() => handleCallPlayer(player.phoneNumber)}
+                    onClick={() => handleCallPlayer(player.phoneNumber, player.job)}
                     >
                       <PhoneIcon />
                     </IconButton>
