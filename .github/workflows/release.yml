@@ -35,20 +35,20 @@ jobs:
     
     - name: Bundle
       run: |
-        mkdir -p ./temp/npwd_qb_services
-        cp ./{README.md,fxmanifest.lua,config.lua} ./temp/npwd_qb_services
-        cp -r ./client ./temp/npwd_qb_services
-        cp -r ./server ./temp/npwd_qb_services
-        cp -r ./web ./temp/npwd_qb_services
-        cd ./temp && zip -r ../npwd_qb_services.zip ./npwd_qb_services
+        mkdir -p ./temp/npwd_services
+        cp ./{README.md,fxmanifest.lua,config.lua} ./temp/npwd_services
+        cp -r ./client ./temp/npwd_services
+        cp -r ./server ./temp/npwd_services
+        cp -r ./web ./temp/npwd_services
+        cd ./temp && zip -r ../npwd_services.zip ./npwd_services
     - name: Create Release
       uses: "marvinpinto/action-automatic-releases@v1.2.1"
       id: auto_release
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        title: NPWD QB Services App | ${{ steps.get_tag.outputs.VERSION_TAG }}
+        title: NPWD Services App | ${{ steps.get_tag.outputs.VERSION_TAG }}
         prerelease: false
-        files: npwd_qb_services.zip
+        files: npwd_services.zip
 
       env:
         CI: false

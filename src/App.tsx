@@ -42,7 +42,7 @@ const App = (props: AppProps) => {
   const isDarkMode = props.theme.palette.mode === 'dark';
 
   useEffect(() => {
-    fetchNui<ServerPromiseResp<Player[]>>('npwd:qb-services:getPlayers').then((resp) => {
+    fetchNui<ServerPromiseResp<Player[]>>('npwd:services:getPlayers').then((resp) => {
       setPlayers(resp.data);
     });
   }, []);
