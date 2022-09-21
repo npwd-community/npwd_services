@@ -14,4 +14,4 @@ Config.Jobs = {
     "garbage",
 }
 
-Config.ShowOffDuty = false --show players who aren't currently on duty
+Config.ShowOffDuty = false --show players who aren't currently on duty (QBcore Only)

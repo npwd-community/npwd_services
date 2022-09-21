@@ -26,7 +26,7 @@ export const PlayersList: React.FC<PlayersListProps> = ({ players, isDarkMode })
   };
 
   const handleCallPlayer = (number: string, job: string) => {
-    fetchNui<ServerPromiseResp>('npwd:qb-services:callPlayer', { number, job }).then((res) => {
+    fetchNui<ServerPromiseResp>('npwd:services:callPlayer', { number, job }).then((res) => {
       console.log(res.data);
     });
   };

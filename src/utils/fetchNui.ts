@@ -21,7 +21,7 @@ async function fetchNui<T = any, D = any>(eventName: string, data?: D, mockResp?
 	}
 
 
-	const resourceName = "npwd_qb_services";
+	const resourceName = "npwd_services";
 	
 	const resp = await fetch(`https://${resourceName}/${eventName}`, options);
 	
