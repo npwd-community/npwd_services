@@ -9,6 +9,7 @@ import { IconButton, Theme, StyledEngineProvider, ThemeProvider, Typography } fr
 import { ArrowBack } from '@mui/icons-material';
 import { Player } from './types/service';
 import { MockPlayers } from './utils/constants';
+import { buildRespObj } from './utils/misc';
 import fetchNui from './utils/fetchNui';
 import { ServerPromiseResp } from './types/common';
 import { PlayersList } from './components/PlayersList';
@@ -42,8 +43,12 @@ const App = (props: AppProps) => {
   const isDarkMode = props.theme.palette.mode === 'dark';
 
   useEffect(() => {
-    fetchNui<ServerPromiseResp<Player[]>>('npwd:services:getPlayers').then((resp) => {
-      setPlayers(resp.data);
+    fetchNui<ServerPromiseResp<Player[]>>(
+      'npwd:services:getPlayers',
+      null,
+      buildRespObj(MockPlayers)
+      ).then((resp) => {
+        setPlayers(resp.data);
     });
   }, []);
 
