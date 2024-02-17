@@ -1,12 +1,12 @@
 {
-  "name": "npwd-app",
+  "name": "npwd_services",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "@babel/core": "7.17.5",
     "@babel/preset-react": "7.16.7",
     "@citizenfx/client": "^2.0.5369-1",
     "@citizenfx/server": "^2.0.5369-1",
+    "@originjs/vite-plugin-federation": "^1.3.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
     "@types/node": "^18.6.4",
     "@types/react": "^17.0.39",
@@ -14,33 +14,26 @@
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.23",
-    "@types/webpack-env": "^1.16.3",
+    "@vitejs/plugin-react": "^4.2.1",
     "add": "^2.0.6",
-    "babel-loader": "8.2.3",
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
     "html-webpack-plugin": "5.5.0",
     "react-refresh": "^0.11.0",
     "react-refresh-typescript": "^2.0.3",
-    "serve": "13.0.2",
-    "ts-loader": "^9.2.6",
     "typescript": "^4.5.5",
-    "webpack": "5.66.0",
-    "webpack-cli": "4.9.2",
-    "webpack-dev-server": "4.7.4",
-    "yarn": "^1.22.17"
+    "vite": "^5.1.3"
   },
   "scripts": {
-    "start": "webpack-cli serve",
-    "build": "cross-env REACT_APP_IN_GAME=1 webpack --mode=production",
-    "dev": "webpack-dev-server --mode=development",
-    "serve": "serve dist -p 3002",
+    "dev": "vite --mode dev",
+    "dev:browser": "concurrently \"pnpm build:watch --mode dev\" \"pnpm preview:dev\"",
+    "build:dev": "vite build --mode dev",
+    "build:watch": "vite build --watch",
+    "build": "vite build --mode game",
+    "preview:dev": "vite preview --mode dev",
     "clean": "rm -rf dist",
-    "watch": "concurrently \"yarn watch:client\" \"yarn watch:server\"  \"yarn watch:nui\"",
-    "watch:nui": "esbuild src/index.tsx --outdir=dist/html --watch --target=es6 --bundle --loader:.png=dataurl",
-    "watch:client": "esbuild client/client.ts --bundle --watch --outfile=dist/client.js",
-    "watch:server": "esbuild server/server.ts --bundle --sourcemap --platform=node --watch --outfile=dist/server.js"
+    "watch:nui": "esbuild src/index.tsx --outdir=dist/html --watch --target=es6 --bundle --loader:.png=dataurl"
   },
   "dependencies": {
     "@emotion/react": "^11.7.0",
@@ -55,10 +48,9 @@
     "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-fivem-hooks": "^1.0.2-1",
     "react-hot-loader": "^4.13.0",
     "react-router-dom": "^5.3.0",
-    "recoil": "^0.6.1",
-    "styled-components": "^5.3.3"
+    "recoil": "^0.7.7",
+    "vite-plugin-top-level-await": "^1.4.1"
   }
 }

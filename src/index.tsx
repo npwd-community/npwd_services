@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import '../npwd.config';
+import React from "react";
+import ReactDOM from "react-dom";
+import "../npwd.config";
+import { BrowserRouter } from "react-router-dom";
+import styled from "@emotion/styled";
+import App from "./App";
+import image from "./bg.png";
+import { RecoilRoot, RecoilEnv } from "recoil";
+import { IPhoneSettings } from "@project-error/npwd-types";
+import i18next from "i18next";
+import { createTheme } from "@mui/material";
 
-import { BrowserRouter } from 'react-router-dom';
-import styled from 'styled-components';
-import App from './App';
-import image from './bg.png';
-import { NuiProvider } from 'react-fivem-hooks';
-import { RecoilRoot } from 'recoil';
-import { IPhoneSettings } from '@project-error/npwd-types';
-import i18next from 'i18next';
-import { createTheme } from '@mui/material';
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
 const Container = styled.div`
   position: relative;
@@ -43,20 +43,20 @@ const AppContainer = styled.div`
 
 // Default settings will come from package. This is for development purposes.
 const settings = {
-	language: {
-		label: 'English',
-		value: 'en',
-	},
-	theme: {
-		label: 'Theme name',
-		value: 'theme-name',
-	},
+  language: {
+    label: "English",
+    value: "en",
+  },
+  theme: {
+    label: "Theme name",
+    value: "theme-name",
+  },
 } as IPhoneSettings;
 
 const theme = createTheme({
-	palette: {
-		mode: 'light',
-	},
+  palette: {
+    mode: "light",
+  },
 });
 
 /*
@@ -65,25 +65,22 @@ const theme = createTheme({
  */
 
 const Root = () => {
-	
-	if (process.env.NODE_ENV === 'production' || process.env.REACT_APP_IN_GAME) {
-        return null;
-    }
-	
-	return (
-		<BrowserRouter>
-			<RecoilRoot>
-				<NuiProvider>
-					<Container>
-						<Background src={image}/>
-						<AppContainer>
-							<App settings={settings} i18n={i18next} theme={theme}/>
-						</AppContainer>
-					</Container>
-				</NuiProvider>
-			</RecoilRoot>
-		</BrowserRouter>
-	)
+  if (process.env.NODE_ENV === "production" || process.env.REACT_APP_IN_GAME) {
+    return null;
+  }
+
+  return (
+    <BrowserRouter>
+      <RecoilRoot>
+        <Container>
+          <Background src={image} />
+          <AppContainer>
+            <App settings={settings} i18n={i18next} theme={theme} />
+          </AppContainer>
+        </Container>
+      </RecoilRoot>
+    </BrowserRouter>
+  );
 };
 
-ReactDOM.render(<Root/>, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById("root"));

@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { NuiProvider } from 'react-fivem-hooks';
-import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
-import { Header } from './styles/header.styles';
-import { IPhoneSettings } from '@project-error/npwd-types';
-import { i18n } from 'i18next';
-import { IconButton, Theme, StyledEngineProvider, ThemeProvider, Typography } from '@mui/material';
-import { ArrowBack } from '@mui/icons-material';
-import { Player } from './types/service';
-import { MockPlayers } from './utils/constants';
-import fetchNui from './utils/fetchNui';
-import { ServerPromiseResp } from './types/common';
-import { PlayersList } from './components/PlayersList';
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import styled from "@emotion/styled";
+import { Header } from "./styles/header.styles";
+import { IPhoneSettings } from "@project-error/npwd-types";
+import { i18n } from "i18next";
+import {
+  IconButton,
+  Theme,
+  StyledEngineProvider,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
+import { Player } from "./types/service";
+import fetchNui from "./utils/fetchNui";
+import { ServerPromiseResp } from "./types/common";
+import { PlayersList } from "./components/PlayersList";
 
 const Container = styled.div<{ isDarkMode: any }>`
   flex: 1;
@@ -28,6 +32,7 @@ const Container = styled.div<{ isDarkMode: any }>`
     background-color: #212121;
   `}
 `;
+
 interface AppProps {
   theme: Theme;
   i18n: i18n;
@@ -39,14 +44,15 @@ const App = (props: AppProps) => {
   const [players, setPlayers] = useState<Player[] | undefined>([]);
   const [mappedPlayers, setMappedPlayers] = useState<any>(null);
 
-  const isDarkMode = props.theme.palette.mode === 'dark';
+  const isDarkMode = props.theme.palette.mode === "dark";
 
   useEffect(() => {
-    fetchNui<ServerPromiseResp<Player[]>>('npwd:services:getPlayers').then((resp) => {
-      setPlayers(resp.data);
-    });
+    fetchNui<ServerPromiseResp<Player[]>>("npwd:services:getPlayers").then(
+      (resp) => {
+        setPlayers(resp.data);
+      }
+    );
   }, []);
-
 
   useEffect(() => {
     if (players) {
@@ -72,17 +78,15 @@ const App = (props: AppProps) => {
               Services
             </Typography>
           </Header>
-          {mappedPlayers && <PlayersList isDarkMode={isDarkMode} players={mappedPlayers} />}
+          {mappedPlayers && (
+            <PlayersList isDarkMode={isDarkMode} players={mappedPlayers} />
+          )}
         </Container>
       </ThemeProvider>
     </StyledEngineProvider>
   );
 };
 
-const WithProviders: React.FC<AppProps> = (props) => (
-  <NuiProvider>
-    <App {...props} />
-  </NuiProvider>
-);
+const WithProviders: React.FC<AppProps> = (props) => <App {...props} />;
 
 export default WithProviders;
