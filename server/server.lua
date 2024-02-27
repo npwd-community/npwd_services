@@ -13,7 +13,7 @@ if isESX then
 	FrameworkObj.RegisterServerCallback('npwd:services:getPlayers', function(src, cb)
 		local PlayerList = {}
 
-		for jobIndex =1, #Config.Jobs do
+		for jobIndex = 1, #Config.Jobs do
 			local PlayersWithJob = FrameworkObj.GetExtendedPlayers("job", Config.Jobs[jobIndex])
 			for playerIndex = 1, #PlayersWithJob do
 				local xPlayer = PlayersWithJob[playerIndex]
@@ -35,16 +35,18 @@ if isQB then
 		local players = FrameworkObj.Functions.GetQBPlayers()
 		local playerList = {}
 	
-		
-		for i = 1, #players do
-			if not Config.ShowOffDuty and players[i].PlayerData.job.onduty then
+		for _, Player in pairs(players) do
+			if not Config.ShowOffDuty and Player.PlayerData.job.onduty then
 				for _, job in pairs(Config.Jobs) do
-					if job == players[i].PlayerData.job.name then
-						table.insert(playerList, {
-							name = players[i].PlayerData.charinfo.firstname .. " " .. players[i].PlayerData.charinfo.lastname,
-							job = players[i].PlayerData.job.name,
-							phoneNumber = players[i].PlayerData.charinfo.phone,
-						})
+					if job == Player.PlayerData.job.name then
+						table.insert(
+							playerList,
+							{
+								name = Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname,
+								job = Player.PlayerData.job.name,
+								phoneNumber = Player.PlayerData.charinfo.phone
+							}
+						)
 					end
 				end
 			end
