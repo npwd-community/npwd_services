@@ -17,7 +17,7 @@ if isESX then
 			local PlayersWithJob = FrameworkObj.GetExtendedPlayers("job", Config.Jobs[jobIndex])
 			for playerIndex = 1, #PlayersWithJob do
 				local xPlayer = PlayersWithJob[playerIndex]
-				local PlayerData = exports.npwd:getPlayerData({source = src})
+				local PlayerData = exports.npwd:getPlayerData({source = xPlayer.source})
 				PlayerList[#PlayerList + 1] = {
 						name = xPlayer.getName(),
 						job = xPlayer.job.name,
